@@ -23,7 +23,7 @@ echo Building GPIO16 blink...
 REM ==============================================================================
 REM Assemble source files
 REM ==============================================================================
-arm-none-eabi-as -mcpu=cortex-m33 -mthumb main.s -o main.o
+arm-none-eabi-as -mcpu=cortex-m33 -mthumb main.s -o gpio16_blink.o
 if errorlevel 1 goto error
 
 arm-none-eabi-as -mcpu=cortex-m33 -mthumb image_def.s -o image_def.o
@@ -76,3 +76,4 @@ echo BUILD FAILED!
 echo.
 
 :end
+
