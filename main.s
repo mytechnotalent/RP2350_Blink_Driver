@@ -23,13 +23,13 @@
  * Memory addresses and constants.
  */
 .equ STACK_TOP,                   0x20082000               
-.equ STACK_LIMIT,                 0x2007A000             
+.equ STACK_LIMIT,                 0x2007a000             
 .equ XOSC_BASE,                   0x40048000          
 .equ XOSC_CTRL,                   XOSC_BASE + 0x00       
 .equ XOSC_STATUS,                 XOSC_BASE + 0x04       
-.equ XOSC_STARTUP,                XOSC_BASE + 0x0C        
-.equ PPB_BASE,                    0xE0000000               
-.equ CPACR,                       PPB_BASE + 0x0ED88       
+.equ XOSC_STARTUP,                XOSC_BASE + 0x0c        
+.equ PPB_BASE,                    0xe0000000               
+.equ CPACR,                       PPB_BASE + 0x0ed88       
 .equ CLOCKS_BASE,                 0x40010000              
 .equ CLK_PERI_CTRL,               CLOCKS_BASE + 0x48       
 .equ RESETS_BASE,                 0x40020000               
@@ -111,7 +111,7 @@ Init_Stack:
 .type Init_XOSC, %function
 Init_XOSC:
   ldr   r0, =XOSC_STARTUP                        // load XOSC_STARTUP address
-  ldr   r1, =0x00C4                              // set delay 50,000 cycles
+  ldr   r1, =0x00c4                              // set delay 50,000 cycles
   str   r1, [r0]                                 // store value into XOSC_STARTUP
   ldr   r0, =XOSC_CTRL                           // load XOSC_CTRL address
   ldr   r1, =0x00FABAA0                          // set 1_15MHz, freq range, actual 14.5MHz
@@ -249,7 +249,7 @@ GPIO_Config:
   ldr   r4, =IO_BANK0_BASE                       // load IO_BANK0 base
   add   r4, r4, r1                               // IO_BANK0_BASE + CTRL_OFFSET
   ldr   r5, [r4]                                 // read CTRL_OFFSET value
-  bic   r5, r5, #0x1F                            // clear FUNCSEL
+  bic   r5, r5, #0x1f                            // clear FUNCSEL
   orr   r5, r5, #0x05                            // set FUNCSEL 0x05->SIO_0
   str   r5, [r4]                                 // store value into CTRL_OFFSET
 .GPIO_Config_Enable_OE:
@@ -264,7 +264,7 @@ GPIO_Config:
  *
  * @details Drives GPIO output high via coprocessor.
  *
- * @param   R0 - GPIO
+ * @param   r0 - GPIO
  * @retval  None
  */
 .type GPIO_Set, %function
@@ -283,7 +283,7 @@ GPIO_Set:
  *
  * @details Drives GPIO output high via coprocessor.
  *
- * @param   R0 - GPIO
+ * @param   r0 - GPIO
  * @retval  None
  */
 .type GPIO_Clear, %function
@@ -300,10 +300,10 @@ GPIO_Clear:
 /**
  * @brief   Delay_MS.
  *
- * @details Delays for R0 milliseconds. Conversion: loop_count = ms * 3600
+ * @details Delays for r0 milliseconds. Conversion: loop_count = ms * 3600
  *          based on a 14.5MHz clock.
  *
- * @param   R0 - milliseconds
+ * @param   r0 - milliseconds
  * @retval  None
  */
 .type Delay_MS, %function
