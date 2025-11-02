@@ -7,6 +7,10 @@
 # RP2350 Blink Driver
 An RP2350 blink driver written entirely in Assembler.
 
+# Install ARM Toolchain
+## NOTE: Be SURE to select `Add path to environment variable` on setup.
+[HERE](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads)
+
 # Code
 ```assembler
 /**
