@@ -68,8 +68,7 @@ _vectors:
  * @param   None
  * @retval  None
  */
-.global Reset_Handler                            // export Reset_Handler symbol
-.type Reset_Handler, %function                        
+.global Reset_Handler                            // export Reset_Handler symbol                      
 .type Reset_Handler, %function                        
 Reset_Handler:
   bl    Init_Stack                               // initialize MSP/PSP and limits
@@ -200,15 +199,12 @@ Enable_Coprocessor:
 .type main, %function                            // mark as function
 main:
 .Push_Registers:
-.Push_Registers:
   push  {r4-r12, lr}                             // push registers r4-r12, lr to the stack
-.GPIO16_Config:
 .GPIO16_Config:
   ldr   r0, =PADS_BANK0_GPIO16_OFFSET            // load PADS_BANK0_GPIO16_OFFSET
   ldr   r1, =IO_BANK0_GPIO16_CTRL_OFFSET         // load IO_BANK0_GPIO16_CTRL_OFFSET
   ldr   r2, =16                                  // load GPIO number
   bl    GPIO_Config                              // call GPIO_Config
-.Loop:
 .Loop:
   ldr   r0, =16                                  // load GPIO number
   bl    GPIO_Set                                 // call GPIO_Set
