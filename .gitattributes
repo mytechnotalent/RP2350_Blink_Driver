@@ -1,9 +1,11 @@
-# Force assembler extensions to be recognized as Assembly
-*.s      linguist-language=Assembly
-*.S      linguist-language=Assembly
-*.asm    linguist-language=Assembly
-*.inc    linguist-language=Assembly
-*.ld     linguist-language=Assembly
+# Assembly files
+*.s linguist-language=Assembly
 
-# Explicitly ignore Python files from language statistics
-*.py     linguist-detectable=false
+# Exclude from language statistics
+*.ld linguist-vendored
+*.bat linguist-vendored
+*.py linguist-vendored
+linker.ld linguist-vendored
+build.bat linguist-vendored
+clean.bat linguist-vendored
+uf2conv.py linguist-vendored
