@@ -18,40 +18,40 @@ echo Building...
 REM ==============================================================================
 REM Assemble Source Files
 REM ==============================================================================
-arm-none-eabi-as -mcpu=cortex-m33 -mthumb vector_table.s -o vector_table.o
+arm-none-eabi-as -g -mcpu=cortex-m33 -mthumb vector_table.s -o vector_table.o
 if errorlevel 1 goto error
 
-arm-none-eabi-as -mcpu=cortex-m33 -mthumb reset_handler.s -o reset_handler.o
+arm-none-eabi-as -g -mcpu=cortex-m33 -mthumb reset_handler.s -o reset_handler.o
 if errorlevel 1 goto error
 
-arm-none-eabi-as -mcpu=cortex-m33 -mthumb stack.s -o stack.o
+arm-none-eabi-as -g -mcpu=cortex-m33 -mthumb stack.s -o stack.o
 if errorlevel 1 goto error
 
-arm-none-eabi-as -mcpu=cortex-m33 -mthumb xosc.s -o xosc.o
+arm-none-eabi-as -g -mcpu=cortex-m33 -mthumb xosc.s -o xosc.o
 if errorlevel 1 goto error
 
-arm-none-eabi-as -mcpu=cortex-m33 -mthumb reset.s -o reset.o
+arm-none-eabi-as -g -mcpu=cortex-m33 -mthumb reset.s -o reset.o
 if errorlevel 1 goto error
 
-arm-none-eabi-as -mcpu=cortex-m33 -mthumb coprocessor.s -o coprocessor.o
+arm-none-eabi-as -g -mcpu=cortex-m33 -mthumb coprocessor.s -o coprocessor.o
 if errorlevel 1 goto error
 
-arm-none-eabi-as -mcpu=cortex-m33 -mthumb gpio.s -o gpio.o
+arm-none-eabi-as -g -mcpu=cortex-m33 -mthumb gpio.s -o gpio.o
 if errorlevel 1 goto error
 
-arm-none-eabi-as -mcpu=cortex-m33 -mthumb delay.s -o delay.o
+arm-none-eabi-as -g -mcpu=cortex-m33 -mthumb delay.s -o delay.o
 if errorlevel 1 goto error
 
-arm-none-eabi-as -mcpu=cortex-m33 -mthumb main.s -o main.o
+arm-none-eabi-as -g -mcpu=cortex-m33 -mthumb main.s -o main.o
 if errorlevel 1 goto error
 
-arm-none-eabi-as -mcpu=cortex-m33 -mthumb image_def.s -o image_def.o
+arm-none-eabi-as -g -mcpu=cortex-m33 -mthumb image_def.s -o image_def.o
 if errorlevel 1 goto error
 
 REM ==============================================================================
 REM Link Object Files
 REM ==============================================================================
-arm-none-eabi-ld -T linker.ld vector_table.o reset_handler.o stack.o xosc.o reset.o coprocessor.o gpio.o delay.o main.o image_def.o -o blink.elf
+arm-none-eabi-ld -g -T linker.ld vector_table.o reset_handler.o stack.o xosc.o reset.o coprocessor.o gpio.o delay.o main.o image_def.o -o blink.elf
 if errorlevel 1 goto error
 
 REM ==============================================================================
